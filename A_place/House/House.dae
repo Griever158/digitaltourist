@@ -5,42 +5,45 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.79.0 commit date:2018-03-22, commit time:14:10, hash:f4dc9f9d68b</authoring_tool>
     </contributor>
-    <created>2018-12-25T13:11:05</created>
-    <modified>2018-12-25T13:11:05</modified>
+    <created>2018-12-25T14:35:30</created>
+    <modified>2018-12-25T14:35:30</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
   <library_images>
-    <image id="diff_jpg" name="diff_jpg">
-      <init_from>diff.jpg</init_from>
+    <image id="diff" name="diff">
+      <init_from>diff.png</init_from>
     </image>
   </library_images>
   <library_effects>
-    <effect id="diff_jpg-effect">
+    <effect id="diff-effect">
       <profile_COMMON>
-        <newparam sid="diff_jpg-surface">
+        <newparam sid="diff-surface">
           <surface type="2D">
-            <init_from>diff_jpg</init_from>
+            <init_from>diff</init_from>
           </surface>
         </newparam>
-        <newparam sid="diff_jpg-sampler">
+        <newparam sid="diff-sampler">
           <sampler2D>
-            <source>diff_jpg-surface</source>
+            <source>diff-surface</source>
           </sampler2D>
         </newparam>
         <technique sid="common">
-          <lambert>
+          <phong>
             <diffuse>
-              <texture texture="diff_jpg-sampler" texcoord="diff_jpg"/>
+              <texture texture="diff-sampler" texcoord="diff"/>
             </diffuse>
-          </lambert>
+            <specular>
+              <color sid="specular">0 0 0 1</color>
+            </specular>
+          </phong>
         </technique>
       </profile_COMMON>
     </effect>
   </library_effects>
   <library_materials>
-    <material id="diff_jpg-material" name="diff_jpg">
-      <instance_effect url="#diff_jpg-effect"/>
+    <material id="diff-material" name="diff">
+      <instance_effect url="#diff-effect"/>
     </material>
   </library_materials>
   <library_geometries>
@@ -88,7 +91,7 @@
         <vertices id="House_001-mesh-vertices">
           <input semantic="POSITION" source="#House_001-mesh-positions"/>
         </vertices>
-        <triangles material="diff_jpg-material" count="16756">
+        <triangles material="diff-material" count="16756">
           <input semantic="VERTEX" source="#House_001-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#House_001-mesh-normals" offset="1"/>
           <input semantic="TEXCOORD" source="#House_001-mesh-map-0" offset="2" set="0"/>
@@ -102,11 +105,11 @@
   <library_visual_scenes>
     <visual_scene id="Scene" name="Scene">
       <node id="House_001" name="House_001" type="NODE">
-        <matrix sid="transform">1 0 0 13.52741 0 1 0 7.487243 0 0 1 3.071319 0 0 0 1</matrix>
+        <matrix sid="transform">1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1</matrix>
         <instance_geometry url="#House_001-mesh" name="House_001">
           <bind_material>
             <technique_common>
-              <instance_material symbol="diff_jpg-material" target="#diff_jpg-material">
+              <instance_material symbol="diff-material" target="#diff-material">
                 <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
               </instance_material>
             </technique_common>
