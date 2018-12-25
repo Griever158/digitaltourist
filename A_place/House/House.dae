@@ -29,14 +29,11 @@
           </sampler2D>
         </newparam>
         <technique sid="common">
-          <phong>
+          <lambert>
             <diffuse>
               <texture texture="diff_jpg-sampler" texcoord="diff_jpg"/>
             </diffuse>
-            <specular>
-              <color sid="specular">0 0 0 1</color>
-            </specular>
-          </phong>
+          </lambert>
         </technique>
       </profile_COMMON>
     </effect>
