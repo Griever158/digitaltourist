@@ -38,7 +38,12 @@
             </specular>
           </phong>
         </technique>
-      </profile_COMMON>
+       <extra>
+          <technique>
+            <double_sided sid="double_sided" type="int">1</double_sided>
+          </technique>
+        </extra> 
+	</profile_COMMON>
     </effect>
   </library_effects>
   <library_materials>
